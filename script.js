@@ -29,20 +29,40 @@ function refresh() {
         let bookContainer = document.createElement("div");
         bookContainer.className += "bookContainer";
 
-        let bookName = document.createElement('h')
-        let bookAuthor = document.createElement('h')
-        let bookPages = document.createElement('h')
-        let bookRead = document.createElement('h')
+        let nameSpan = document.createElement('span');
+        let authorSpan = document.createElement('span');
+        let pagesSpan = document.createElement('span');
+        let readSpan = document.createElement('span');
+
+        let bookName = document.createElement('p');
+        let bookAuthor = document.createElement('p');
+        let bookPages = document.createElement('p');
+        let bookRead = document.createElement('p');
+
+        let nameTag = document.createElement('h3');
+        let authorTag = document.createElement('h3');
+        let pagesTag = document.createElement('h3');
+        let readTag = document.createElement('h3');
+
+        nameTag.innerText = "Name: ";
+        authorTag.innerText = "Author: ";
+        pagesTag.innerText = "Pages: ";
+        readTag.innerText = "Read?: ";
 
         bookName.innerText = book.title;
         bookAuthor.innerText = book.author;
         bookPages.innerText = book.pages;
         bookRead.innerText = book.read;
 
-        bookContainer.appendChild(bookName);
-        bookContainer.appendChild(bookAuthor);
-        bookContainer.appendChild(bookPages);
-        bookContainer.appendChild(bookRead);
+        nameSpan.append(nameTag, bookName);
+        authorSpan.append(authorTag, bookAuthor);
+        pagesSpan.append(pagesTag, bookPages);
+        readSpan.append(readTag, bookRead);
+
+        bookContainer.appendChild(nameSpan);
+        bookContainer.appendChild(authorSpan);
+        bookContainer.appendChild(pagesSpan);
+        bookContainer.appendChild(readSpan);
         libraryContainer.appendChild(bookContainer);
 
 

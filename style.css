@@ -1,4 +1,44 @@
+body {
+    margin: 0;
+    background-color: #f3f4f6;
+}
+
 .bookContainer {
     display: flex;
     flex-direction: column;
+
+    border-radius: 8px;
+    border-left: 8px solid #fbbf24;
+    background-color: white;
+}
+
+.bookContainer span {
+    display: flex;
+}
+
+.sidebar {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 20vw;
+    height: 100vh;
+}
+
+.sidebar form {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+}
+
+.library {
+    margin-left: 23vw;
+    margin-right: 3vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
 }
