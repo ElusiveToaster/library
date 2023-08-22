@@ -25,7 +25,7 @@ function newBook() {
 function refresh() {
     let libraryContainer = document.querySelector('.library');
     libraryContainer.innerHTML = "";
-    myLibrary.forEach( (book) => {
+    myLibrary.forEach( (book, index) => {
         let libraryContainer = document.querySelector('.library');
 
         let bookContainer = document.createElement("div");
@@ -46,6 +46,20 @@ function refresh() {
         let pagesTag = document.createElement('h3');
         let readTag = document.createElement('h3');
 
+        let removeButton = document.createElement('button');
+
+        removeButton.innerText = "Remove";
+
+        removeButton.addEventListener("click", () => {
+            let bookContainer = document.querySelector(".bookContainer");
+            let bookID = document.querySelector("button").dataset.index;
+
+            myLibrary.splice(bookID, 1);
+
+            bookContainer.remove();
+
+        })
+
         nameTag.innerText = "Name: ";
         authorTag.innerText = "Author: ";
         pagesTag.innerText = "Pages: ";
@@ -62,10 +76,12 @@ function refresh() {
         readSpan.append(readTag, bookRead);
 
         
+        removeButton.dataset.index = index;
         bookContainer.appendChild(nameSpan);
         bookContainer.appendChild(authorSpan);
         bookContainer.appendChild(pagesSpan);
         bookContainer.appendChild(readSpan);
+        bookContainer.appendChild(removeButton);
         libraryContainer.appendChild(bookContainer);
 
 
