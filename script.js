@@ -23,9 +23,11 @@ function newBook() {
 }
 
 function refresh() {
+    let libraryContainer = document.querySelector('.library');
+    libraryContainer.innerHTML = "";
     myLibrary.forEach( (book) => {
         let libraryContainer = document.querySelector('.library');
-        
+
         let bookContainer = document.createElement("div");
         bookContainer.className += "bookContainer";
 
@@ -59,6 +61,7 @@ function refresh() {
         pagesSpan.append(pagesTag, bookPages);
         readSpan.append(readTag, bookRead);
 
+        
         bookContainer.appendChild(nameSpan);
         bookContainer.appendChild(authorSpan);
         bookContainer.appendChild(pagesSpan);
