@@ -16,13 +16,14 @@ function newBook() {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
-    let read = document.getElementById('read').value;
+    let read = document.getElementById('read').checked;
 
     myLibrary[id] = new book(title, author, pages, read);
     id++;
 }
 
 function refresh() {
+    newBook();
     let libraryContainer = document.querySelector('.library');
     libraryContainer.innerHTML = "";
     myLibrary.forEach( (book, index) => {
@@ -50,13 +51,21 @@ function refresh() {
 
         removeButton.innerText = "Remove";
 
-        removeButton.addEventListener("click", () => {
-            let bookContainer = document.querySelector(".bookContainer");
-            let bookID = document.querySelector("button").dataset.index;
+        removeButton.addEventListener("click", (e) => {
+            let bookContainer = document.querySelectorAll(".bookContainer");
+            let bookID = e.target.dataset.index;
+
+            console.log(bookID);
 
             myLibrary.splice(bookID, 1);
 
-            bookContainer.remove();
+            bookContainer.forEach( (container) => {
+                if (container.lastChild.dataset.index == bookID){
+                    container.remove();
+                } else if (container.lastChild.dataset.index > bookID) {
+                    --container.lastChild.dataset.index
+                }
+            })
 
         })
 
@@ -68,7 +77,13 @@ function refresh() {
         bookName.innerText = book.title;
         bookAuthor.innerText = book.author;
         bookPages.innerText = book.pages;
-        bookRead.innerText = book.read;
+        
+        if (book.read) {
+            bookRead.innerText = "Yes";
+        } else {
+            bookRead.innerText = "No";
+        }
+        
 
         nameSpan.append(nameTag, bookName);
         authorSpan.append(authorTag, bookAuthor);
