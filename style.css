@@ -12,6 +12,8 @@ body {
     border-left: 8px solid #fbbf24;
     background-color: white;
     padding-left: 10px;
+
+    position: relative;
 }
 
 .bookContainer span {
@@ -25,6 +27,14 @@ body {
 
 .bookContainer h3 {
     margin: 7px 0px;
+}
+
+.read {
+    color: green;
+}
+
+.unread {
+    color: red;
 }
 
 
@@ -81,4 +91,24 @@ input {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 450px));
     gap: 25px;
+}
+
+.bookContainer button {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    border-radius: 2px;
+    border: none;
+
+    padding: 0;
+    
+
+    background-color: red;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
 }

@@ -40,16 +40,15 @@ function refresh() {
         let bookName = document.createElement('p');
         let bookAuthor = document.createElement('p');
         let bookPages = document.createElement('p');
-        let bookRead = document.createElement('p');
+        let bookRead = document.createElement('h3');
 
         let nameTag = document.createElement('h3');
         let authorTag = document.createElement('h3');
         let pagesTag = document.createElement('h3');
-        let readTag = document.createElement('h3');
 
         let removeButton = document.createElement('button');
 
-        removeButton.innerText = "Remove";
+        removeButton.innerText = "X";
 
         removeButton.addEventListener("click", (e) => {
             let bookContainer = document.querySelectorAll(".bookContainer");
@@ -72,23 +71,24 @@ function refresh() {
         nameTag.innerText = "Name: ";
         authorTag.innerText = "Author: ";
         pagesTag.innerText = "Pages: ";
-        readTag.innerText = "Read?: ";
 
         bookName.innerText = book.title;
         bookAuthor.innerText = book.author;
         bookPages.innerText = book.pages;
         
         if (book.read) {
-            bookRead.innerText = "Yes";
+            bookRead.innerText = "Read";
+            bookRead.classList.add("read");
         } else {
-            bookRead.innerText = "No";
+            bookRead.innerText = "Unread";
+            bookRead.classList.add("unread");
         }
         
 
         nameSpan.append(nameTag, bookName);
         authorSpan.append(authorTag, bookAuthor);
         pagesSpan.append(pagesTag, bookPages);
-        readSpan.append(readTag, bookRead);
+        readSpan.append(bookRead);
 
         
         removeButton.dataset.index = index;
