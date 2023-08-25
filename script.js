@@ -68,6 +68,21 @@ function refresh() {
 
         })
 
+        bookRead.addEventListener("click", (e) => {
+            let bookContainer = document.querySelectorAll(".bookContainer");
+            let removeBtn = e.target.nextSibling;
+            if (myLibrary[removeBtn.dataset.index].read == true) {
+                myLibrary[removeBtn.dataset.index].read = false;
+            } else {
+                myLibrary[removeBtn.dataset.index].read = true;
+            }
+
+            e.target.classList.toggle("read")
+
+            
+
+        })
+
         nameTag.innerText = "Name: ";
         authorTag.innerText = "Author: ";
         pagesTag.innerText = "Pages: ";
@@ -77,25 +92,24 @@ function refresh() {
         bookPages.innerText = book.pages;
         
         if (book.read) {
-            bookRead.innerText = "Read";
             bookRead.classList.add("read");
-        } else {
-            bookRead.innerText = "Unread";
-            bookRead.classList.add("unread");
         }
+
+        bookRead.innerText = "";
+        bookRead.classList.add("unread");
         
 
         nameSpan.append(nameTag, bookName);
         authorSpan.append(authorTag, bookAuthor);
         pagesSpan.append(pagesTag, bookPages);
-        readSpan.append(bookRead);
+        //readSpan.append(bookRead);
 
         
         removeButton.dataset.index = index;
         bookContainer.appendChild(nameSpan);
         bookContainer.appendChild(authorSpan);
         bookContainer.appendChild(pagesSpan);
-        bookContainer.appendChild(readSpan);
+        bookContainer.appendChild(bookRead);
         bookContainer.appendChild(removeButton);
         libraryContainer.appendChild(bookContainer);
 

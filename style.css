@@ -29,14 +29,22 @@ body {
     margin: 7px 0px;
 }
 
-.read {
-    color: green;
-}
 
 .unread {
     color: red;
 }
 
+.read {
+    color: green;
+}
+
+.unread::before {
+    content: "Unread";
+}
+
+.read::before {
+    content: "Read";
+}
 
 .sidebar {
     background-color: #0c4a6e;
@@ -74,7 +82,7 @@ input {
 }
 
 .sidebar button {
-    width: 32%;
+    width: 120px;
     height: 40px;
     border-radius: 10px;
 
